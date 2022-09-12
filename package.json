@@ -2,6 +2,7 @@
   "name": "photo-media",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://fffffkkk.github.io/photo-media-react-app/",
   "dependencies": {
     "@react-oauth/google": "^0.2.6",
     "@sanity/client": "^3.3.6",
