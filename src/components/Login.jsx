@@ -1,17 +1,15 @@
 import React from 'react';
-import { FcGoogle } from 'react-icons/fc';
 import { GoogleLogin } from '@react-oauth/google'
 import jwt_decode from 'jwt-decode'
+import { FcStackOfPhotos } from 'react-icons/fc'
 
 import shareVideo from '../assets/video-login.mp4';
-import logo from '../assets/logo-white.png';
 import { client } from '../client';
 import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
 
-  const user = false
   const navigate = useNavigate()
 
   const responseGoogle = (response) => {
@@ -50,8 +48,9 @@ const Login = () => {
         />
 
         <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay">
-          <div className="p-5">
-            <img src={logo} width="130px" />
+          <div className="p-5 flex items-center justify-center">
+            <FcStackOfPhotos size={`48px`} />
+            <h1 className='text-primary font-bold text-2xl'>LOOK</h1>
           </div>
             <GoogleLogin 
               onSuccess={(response) => 

@@ -3,17 +3,18 @@ import { Route, Routes } from 'react-router-dom'
 import { HiMenu } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { FcStackOfPhotos } from 'react-icons/fc'
 
 import { Sidebar, UserProfile } from '../components'
 import Pins from './Pins'
 import { client } from '../client'
-import logo from '../assets/logo.png'
 import { userQuery } from '../utils/data'
 import { fetchUser } from '../utils/fetchUser';
 
 const Home = () => {
 	const [toggleSidebar, setToggleSidebar] = useState(false)
 	const [user, setUser] = useState(null)
+	const [hiddenSidebar, setHiddenSidebar] = useState(false)
 	const scrollRef = useRef(null)
 
 	const userInfo = fetchUser()
@@ -33,16 +34,24 @@ const Home = () => {
 	return (
 		<div className='flex bg-gray-50 md:flex-row flex-col h-screen transition-height duration-75 ease-out'>
 			<div className='hidden md:flex h-screen flex-initial'>
-				<Sidebar user={user && user} />
+				<Sidebar
+					user={user && user} 
+				/>
+				
 			</div>
 			<div className='flex md:hidden flex-row'>
 				<div className='p-2 w-full flex flex-row justify-between items-center shadow-md'>
 					<HiMenu fontSize={40} className='cursor-pointer' onClick={() => setToggleSidebar(true)} />
-					<Link to='/'>
-						<img src={logo} alt="logo" className='w-28' />
+					<Link to='/' className='flex items-center gap-2'>
+						<FcStackOfPhotos size={`40px`} />
+						<span className='font-bold text-black text-2xl'>LOOK</span>
 					</Link>
 					<Link to={`user-profile/${user?._id}`}>
-						<img src={user?.image} alt="user-photo" className='w-9 h-9 rounded-full' />
+						<img 
+							src={user?.image} 
+							alt="user-photo" 
+							className='w-9 h-9 rounded-full'
+						/>
 					</Link>
 				</div>
 				{toggleSidebar && (

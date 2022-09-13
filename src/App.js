@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate, HashRouter } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import { useEffect } from 'react'
 
@@ -18,10 +18,10 @@ function App() {
   
   return (
     <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}>
-      <HashRouter>
+      <Routes>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/*' element={<Home />}></Route>  
-      </HashRouter>
+      </Routes>
     </GoogleOAuthProvider>
   );
 }
